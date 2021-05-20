@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 class Movie{
     public $title;
     public $description;
-    public $filmInfo;
 
     public function __construct($titleCon, $descrCon = ''){
         $this -> title = $titleCon;
@@ -17,8 +16,6 @@ class Movie{
         }else{
             $this -> description = $descrCon;
         }
-
-        $this -> filmInfo = $this -> getMovieInfo();
     }
 
     public function getMovieInfo(){
@@ -33,9 +30,9 @@ class movieController extends Controller
         $movie2 = new Movie('Tarzan');
         $movie3 = new Movie('Guardiani della Galassia', 'Descr bla bdasdsad asjhdjas asla bla bla bla');
 
-        $descr1 = $movie1 -> filmInfo;
-        $descr2 = $movie2 -> filmInfo;
-        $descr3 = $movie3 -> filmInfo;
+        $descr1 = $movie1 -> getMovieInfo();
+        $descr2 = $movie2 -> getMovieInfo();
+        $descr3 = $movie3 -> getMovieInfo();
 
         dd($descr1, $descr2, $descr3);
         return view('pages.index');
